@@ -1,0 +1,14 @@
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\bin\Debug\netcoreapp2.1\devrant-api-datawarehouse.deps.json
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\bin\Debug\netcoreapp2.1\devrant-api-datawarehouse.runtimeconfig.json
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\bin\Debug\netcoreapp2.1\devrant-api-datawarehouse.runtimeconfig.dev.json
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\bin\Debug\netcoreapp2.1\devrant-api-datawarehouse.dll
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\bin\Debug\netcoreapp2.1\devrant-api-datawarehouse.pdb
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.csprojAssemblyReference.cache
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.csproj.CoreCompileInputs.cache
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.RazorAssemblyInfo.cache
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.RazorAssemblyInfo.cs
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.AssemblyInfoInputs.cache
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.AssemblyInfo.cs
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.RazorTargetAssemblyInfo.cache
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.dll
+C:\Users\Tea\Desktop\devrant-api-datawarehouse\obj\Debug\netcoreapp2.1\devrant-api-datawarehouse.pdb
