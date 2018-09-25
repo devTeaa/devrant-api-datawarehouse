@@ -9,34 +9,23 @@ using System.Net;
 
 namespace devrant_api_datawarehouse.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("api/[controller]/[action]")]
   [ApiController]
   public class UserController : Controller
   {
-    DataAccessLayer objUser = new DataAccessLayer();
+    DataAccessLayer DAL = new DataAccessLayer();
 
-    // GET api/values
     [HttpGet]
     public ActionResult<IEnumerable<string>> Get()
     {
       return new string[] { "value1", "value2" };
     }
 
-    // GET api/values/5
-    [HttpGet("{id}")]
-    public JsonResult Get(int id)
-    {
-      List<Test> lstTest = new List<Test>();
-      lstTest = objUser.GetAllTest().ToList();
-
-      return Json(lstTest);
-    }
-
-    // POST api/values
+    // POST api/AddUser
     [HttpPost]
-    public IActionResult AddTest([FromBody] Test test)
+    public IActionResult AddUser([FromBody] User userObj)
     {
-      return StatusCode(200, test);
+      return StatusCode(200);
     }
   }
 }
