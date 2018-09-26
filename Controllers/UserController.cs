@@ -25,7 +25,15 @@ namespace devrant_api_datawarehouse.Controllers
     [HttpPost]
     public IActionResult AddUser([FromBody] User userObj)
     {
-      return StatusCode(200);
+      string message = DAL.AddUser(userObj);
+      if (message == "Success")
+      {
+        return StatusCode(200, message);
+      }
+      else
+      {
+        return StatusCode(400, message);
+      }
     }
   }
 }

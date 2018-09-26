@@ -11,8 +11,8 @@ namespace devrant_api_datawarehouse.Models
 {
   public class DataAccessLayer
   {
-    string ConnectionString = "Server=DESKTOP-52DK8L2\\SQLEXPRESS;Database=devrantapi;User ID=sa;Password=password";
-    // string ConnectionString = "Server=tcp:azure-devrantapi.database.windows.net,1433;Initial Catalog=devrantapi;Persist Security Info=False;User ID=thisadmin;Password=Password123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+    // string ConnectionString = "Server=DESKTOP-52DK8L2\\SQLEXPRESS;Database=devrantapi;User ID=sa;Password=password";
+    string ConnectionString = "Server=tcp:azure-devrantapi.database.windows.net,1433;Initial Catalog=devrantapi;Persist Security Info=False;User ID=thisadmin;Password=Password123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
     public IEnumerable<Test> GetAllTest()
     {
@@ -43,34 +43,42 @@ namespace devrant_api_datawarehouse.Models
     }
 
     // AddUser  
-    public void AddUser(User UserObj)
+    public string AddUser(User UserObj)
     {
       using (SqlConnection conn = new SqlConnection(ConnectionString))
       {
         SqlCommand cmd = new SqlCommand("spAddUser", conn);
         cmd.CommandType = CommandType.StoredProcedure;
 
-        cmd.Parameters.AddWithValue("@user_id", UserObj.user_id);
+        cmd.Parameters.AddWithValue("@user_id", Convert.ToInt32(UserObj.user_id));
         cmd.Parameters.AddWithValue("@username", UserObj.username);
-        cmd.Parameters.AddWithValue("@score", UserObj.score);
+        cmd.Parameters.AddWithValue("@score", Convert.ToInt32(UserObj.score));
         cmd.Parameters.AddWithValue("@about", UserObj.about);
         cmd.Parameters.AddWithValue("@location", UserObj.location);
-        cmd.Parameters.AddWithValue("@created_time", UserObj.created_time);
+        cmd.Parameters.AddWithValue("@created_time", Convert.ToDateTime(UserObj.created_time));
         cmd.Parameters.AddWithValue("@skills", UserObj.skills);
         cmd.Parameters.AddWithValue("@github", UserObj.github);
         cmd.Parameters.AddWithValue("@website", UserObj.website);
-        cmd.Parameters.AddWithValue("@rants", UserObj.rants);
-        cmd.Parameters.AddWithValue("@upvoted", UserObj.upvoted);
-        cmd.Parameters.AddWithValue("@comments", UserObj.comments);
-        cmd.Parameters.AddWithValue("@favorites", UserObj.favorites);
-        cmd.Parameters.AddWithValue("@collabs", UserObj.collabs);
+        cmd.Parameters.AddWithValue("@rants", Convert.ToInt32(UserObj.rants));
+        cmd.Parameters.AddWithValue("@upvoted", Convert.ToInt32(UserObj.upvoted));
+        cmd.Parameters.AddWithValue("@comments", Convert.ToInt32(UserObj.comments));
+        cmd.Parameters.AddWithValue("@favorites", Convert.ToInt32(UserObj.favorites));
+        cmd.Parameters.AddWithValue("@collabs", Convert.ToInt32(UserObj.collabs));
         cmd.Parameters.AddWithValue("@avatar_b", UserObj.avatar_b);
         cmd.Parameters.AddWithValue("@avatar_i", UserObj.avatar_i);
         cmd.Parameters.AddWithValue("@dpp", UserObj.dpp);
 
-        conn.Open();
-        cmd.ExecuteNonQuery();
-        conn.Close();
+        try
+        {
+          conn.Open();
+          cmd.ExecuteNonQuery();
+          conn.Close();
+          return ("Success");
+        }
+        catch (Exception ex)
+        {
+          return (ex.Message.ToString());
+        }
       }
     }
   }
