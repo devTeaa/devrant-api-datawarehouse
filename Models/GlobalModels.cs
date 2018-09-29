@@ -16,12 +16,13 @@ namespace devrant_api_datawarehouse.Models
   {
     public string rant_id { get; set; }
     public string text { get; set; }
+    public string user_id { get; set; }
+    public string num_comments { get; set; }
     public string score { get; set; }
     public string created_time { get; set; }
-    public string attached_image { get; set; }
     public string edited { get; set; }
     public string link { get; set; }
-    public string user_id { get; set; }
+    public string tags { get; set; }
   }
 
   public class User

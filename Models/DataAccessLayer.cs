@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 using Microsoft.Extensions.Configuration;
 
@@ -40,6 +41,35 @@ namespace devrant_api_datawarehouse.Models
         conn.Close();
       }
       return lstTest;
+    }
+
+    // Get details
+    public string GetType(string type)
+    {
+      using (SqlConnection conn = new SqlConnection(ConnectionString))
+      {
+        SqlCommand cmd = new SqlCommand("spGetTypeInfo", conn);
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        cmd.Parameters.AddWithValue("@type", type);
+
+        try
+        {
+          conn.Open();
+          DataSet ds = new DataSet();
+
+          SqlDataAdapter da = new SqlDataAdapter(cmd);
+          da.Fill(ds);
+          ds.Dispose();
+
+          conn.Close();
+          return (JsonConvert.SerializeObject(ds));
+        }
+        catch (Exception ex)
+        {
+          return (ex.Message.ToString());
+        }
+      }
     }
 
     // AddUser  
@@ -81,5 +111,38 @@ namespace devrant_api_datawarehouse.Models
         }
       }
     }
+
+    // AddRant
+    public string AddRant(Rant RantObj)
+    {
+      using (SqlConnection conn = new SqlConnection(ConnectionString))
+      {
+        SqlCommand cmd = new SqlCommand("spAddRant", conn);
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        cmd.Parameters.AddWithValue("@rant_id", Convert.ToInt32(RantObj.user_id));
+        cmd.Parameters.AddWithValue("@text", RantObj.text);
+        cmd.Parameters.AddWithValue("@user_id", Convert.ToInt32(RantObj.user_id));
+        cmd.Parameters.AddWithValue("@num_comments", Convert.ToInt32(RantObj.num_comments));
+        cmd.Parameters.AddWithValue("@score", Convert.ToInt32(RantObj.score));
+        cmd.Parameters.AddWithValue("@created_time", Convert.ToDateTime(RantObj.created_time));
+        cmd.Parameters.AddWithValue("@edited", Convert.ToBoolean(RantObj.edited));
+        cmd.Parameters.AddWithValue("@link", RantObj.link);
+        cmd.Parameters.AddWithValue("@tags", RantObj.tags);
+
+        try
+        {
+          conn.Open();
+          cmd.ExecuteNonQuery();
+          conn.Close();
+          return ("Success");
+        }
+        catch (Exception ex)
+        {
+          return (ex.Message.ToString());
+        }
+      }
+    }
+
   }
 }

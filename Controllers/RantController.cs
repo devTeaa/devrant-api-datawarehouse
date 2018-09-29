@@ -11,21 +11,21 @@ namespace devrant_api_datawarehouse.Controllers
 {
   [Route("api/[controller]/[action]")]
   [ApiController]
-  public class UserController : Controller
+  public class RantController : Controller
   {
     DataAccessLayer DAL = new DataAccessLayer();
 
     [HttpGet]
     public string Get()
     {
-      return (DAL.GetType("user"));
+      return (DAL.GetType("rant"));
     }
 
     // POST api/AddUser
     [HttpPost]
-    public IActionResult AddUser([FromBody] User userObj)
+    public IActionResult AddRant([FromBody] Rant rantObj)
     {
-      string message = DAL.AddUser(userObj);
+      string message = DAL.AddRant(rantObj);
       if (message == "Success")
       {
         return StatusCode(200, message);
