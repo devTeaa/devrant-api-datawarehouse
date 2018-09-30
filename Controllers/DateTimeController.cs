@@ -11,7 +11,7 @@ namespace devrant_api_datawarehouse.Controllers
 {
   [Route("api/[controller]/[action]")]
   [ApiController]
-  public class RantController : Controller
+  public class DateTimeController : Controller
   {
     DataAccessLayer DAL = new DataAccessLayer();
 
@@ -23,9 +23,9 @@ namespace devrant_api_datawarehouse.Controllers
 
     // POST api/AddUser
     [HttpPost]
-    public IActionResult AddRant([FromBody] Rant rantObj)
+    public IActionResult AddDate([FromBody] DateModel date)
     {
-      string message = DAL.AddRant(rantObj);
+      string message = DAL.AddDate(date);
       if (message == "Success")
       {
         return StatusCode(200, message);
@@ -37,9 +37,9 @@ namespace devrant_api_datawarehouse.Controllers
     }
 
     [HttpPost]
-    public IActionResult AddTags([FromBody] Tag tagObj)
+    public IActionResult AddTime([FromBody] TimeModel time)
     {
-      string message = DAL.AddTag(tagObj);
+      string message = DAL.AddTime(time);
       if (message == "Success")
       {
         return StatusCode(200, message);

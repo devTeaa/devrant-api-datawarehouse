@@ -25,6 +25,11 @@ namespace devrant_api_datawarehouse.Models
     public string tags { get; set; }
   }
 
+  public class Tag
+  {
+    public string tags_value { get; set; }
+  }
+
   public class User
   {
     public string user_id { get; set; }
@@ -44,5 +49,36 @@ namespace devrant_api_datawarehouse.Models
     public string avatar_b { get; set; }
     public string avatar_i { get; set; }
     public string dpp { get; set; }
+  }
+
+  public class Comment
+  {
+    public string rant_id { get; set; }
+    public string comment_id { get; set; }
+    public string body { get; set; }
+    public string score { get; set; }
+    public string user_id { get; set; }
+    public string created_time { get; set; }
+  }
+
+  public class DateModel
+  {
+    public string date_short { get; set; }
+    public string date_medium { get; set; }
+    public string date_full { get; set; }
+    public string day { get; set; }
+    public string day_full { get; set; }
+    public string month { get; set; }
+    public string month_full { get; set; }
+    public string year { get; set; }
+  }
+
+  public class TimeModel
+  {
+    public string time_value { get; set; }
+    public string hours_24 { get; set; }
+    public string hours_12 { get; set; }
+    public string minutes { get; set; }
+    public string am_pm { get; set; }
   }
 }
