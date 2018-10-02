@@ -28,10 +28,12 @@ namespace devrant_api_datawarehouse.Controllers
       string message = DAL.AddRant(rantObj);
       if (message == "Success")
       {
+        message = message + rantObj.rant_id;
         return StatusCode(200, message);
       }
       else
       {
+        message = message + rantObj.rant_id;
         return StatusCode(400, message);
       }
     }
@@ -42,10 +44,12 @@ namespace devrant_api_datawarehouse.Controllers
       string message = DAL.AddTag(tagObj);
       if (message == "Success")
       {
+        message = message + tagObj.tags_value;
         return StatusCode(200, message);
       }
       else
       {
+        message = message + tagObj.tags_value;
         return StatusCode(400, message);
       }
     }

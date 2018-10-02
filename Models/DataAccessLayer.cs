@@ -174,7 +174,7 @@ namespace devrant_api_datawarehouse.Models
     {
       using (SqlConnection conn = new SqlConnection(ConnectionString))
       {
-        SqlCommand cmd = new SqlCommand("spAddComment", conn);
+        SqlCommand cmd = new SqlCommand("spAddComments", conn);
         cmd.CommandType = CommandType.StoredProcedure;
 
         cmd.Parameters.AddWithValue("@rant_id", Convert.ToInt32(CommentObj.rant_id));
