@@ -30,6 +30,12 @@ namespace devrant_api_datawarehouse.Models
     public string tags_value { get; set; }
   }
 
+  public class RantTags
+  {
+    public string rant_id { get; set; }
+    public string tags_value { get; set; }
+  }
+
   public class User
   {
     public string user_id { get; set; }

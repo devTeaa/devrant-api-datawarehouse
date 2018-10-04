@@ -152,8 +152,31 @@ namespace devrant_api_datawarehouse.Models
       {
         SqlCommand cmd = new SqlCommand("spAddTag", conn);
         cmd.CommandType = CommandType.StoredProcedure;
-
         cmd.Parameters.AddWithValue("@tags_value", TagObj.tags_value);
+
+        try
+        {
+          conn.Open();
+          cmd.ExecuteNonQuery();
+          conn.Close();
+          return ("Success");
+        }
+        catch (Exception ex)
+        {
+          return (ex.Message.ToString());
+        }
+      }
+    }
+
+    // AddRantTags
+    public string AddRantTags(RantTags RantTagsObj)
+    {
+      using (SqlConnection conn = new SqlConnection(ConnectionString))
+      {
+        SqlCommand cmd = new SqlCommand("spAddRantTags", conn);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@rant_id", RantTagsObj.rant_id);
+        cmd.Parameters.AddWithValue("@tags_value", RantTagsObj.tags_value);
 
         try
         {

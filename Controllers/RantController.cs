@@ -53,5 +53,21 @@ namespace devrant_api_datawarehouse.Controllers
         return StatusCode(400, message);
       }
     }
+
+    [HttpPost]
+    public IActionResult AddRantTags([FromBody] RantTags rantTagsObj)
+    {
+      string message = DAL.AddRantTags(rantTagsObj);
+      if (message == "Success")
+      {
+        message = message + rantTagsObj.rant_id + ',' + rantTagsObj.tags_value;
+        return StatusCode(200, message);
+      }
+      else
+      {
+        message = message + rantTagsObj.rant_id + ',' + rantTagsObj.tags_value;
+        return StatusCode(400, message);
+      }
+    }
   }
 }
